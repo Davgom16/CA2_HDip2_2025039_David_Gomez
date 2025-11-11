@@ -51,6 +51,19 @@ public class CA2_HDip2_2025039_David_Gomez {
             return binarySearch(arr, mid + 1, right, target); // Search right half
         }
     }
+    
+    // Simple Employee data structure
+    public static class Employee {
+        String name;
+        String manager;
+        String department;
+
+        public Employee(String name, String manager, String department) {
+            this.name = name;
+            this.manager = manager;
+            this.department = department;
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -88,7 +101,7 @@ public class CA2_HDip2_2025039_David_Gomez {
 
             switch (choice) {
                 case 1:
-                    int i = 1;
+                    int j = 1;
                     System.out.println("\nYou chose: SORT");
                     try (Scanner fileScanner = new Scanner(new File(fileName))) {
                         // Skip header line
@@ -120,8 +133,8 @@ public class CA2_HDip2_2025039_David_Gomez {
                         // Show sorted names
                         System.out.println("\nAfter sorting (A–Z):");
                         for (String name : names) {
-                            System.out.println(i + " " +name);
-                            i = i + 1;
+                            System.out.println(j + " " +name);
+                            j = j + 1;
                         }
 
                     } catch (FileNotFoundException e) {
@@ -129,48 +142,62 @@ public class CA2_HDip2_2025039_David_Gomez {
                     }                    
                     break;
                 case 2:
-                    
                     System.out.println("\nYou chose: SEARCH");
 
-                    try (Scanner fileScanner = new Scanner(new File(fileName))) {
-                        // Skip header line
-                        if (fileScanner.hasNextLine()) fileScanner.nextLine();
+                try (Scanner fileScanner = new Scanner(new File(fileName))) {
+                    // Skip header line
+                    if (fileScanner.hasNextLine()) fileScanner.nextLine();
 
-                        // Read all names into an array list
-                        List<String> namesList = new ArrayList<>();
+                    // Read all employees into a list
+                    List<Employee> employeeList = new ArrayList<>();
 
-                        while (fileScanner.hasNextLine()) {
-                            String line = fileScanner.nextLine();
-                            String[] parts = line.split(",");
-                            if (parts.length >= 1) {
-                                namesList.add(parts[0].trim());
-                            }
+                    while (fileScanner.hasNextLine()) {
+                        String line = fileScanner.nextLine();
+                        String[] parts = line.split(",");
+                        if (parts.length >= 3) {
+                            String name = parts[0].trim();
+                            String manager = parts[1].trim();
+                            String department = parts[2].trim();
+                            employeeList.add(new Employee(name, manager, department));
                         }
-
-                        // Convert to array and sort first (binary search requires sorted data)
-                        String[] names = namesList.toArray(new String[0]);
-                        InsertionSort.insertionSort(names);
-
-                        // Ask the user for the name to search
-                        System.out.print("Enter the name to search: ");
-                        String targetName = scanner.nextLine().trim();
-
-                        // Perform binary search
-                        int result = binarySearch(names, 0, names.length - 1, targetName);
-
-                        // Show results
-                        if (result == -1) {
-                            System.out.println("Name not found in the list.");
-                        } else {
-                            System.out.println("Name found at position: " + result);
-                            System.out.println("Name: " + names[result]);
-                        }
-
-                    } catch (FileNotFoundException e) {
-                        System.out.println("Error: File not found!");
                     }
 
-                    break;
+                    // Extract only the names for searching and sort both lists
+                    String[] names = new String[employeeList.size()];
+                    for (int i = 0; i < employeeList.size(); i++) {
+                        names[i] = employeeList.get(i).name;
+                    }
+
+                    // Sort names alphabetically (insertion sort)
+                    InsertionSort.insertionSort(names);
+
+                    // Ask for user input
+                    System.out.print("Enter the name to search: ");
+                    String targetName = scanner.nextLine().trim();
+
+                    // Perform binary search
+                    int result = binarySearch(names, 0, names.length - 1, targetName);
+
+                    if (result == -1) {
+                        System.out.println("Name not found in the list.");
+                    } else {
+                        // Find the matching employee’s full info
+                        for (Employee emp : employeeList) {
+                            if (emp.name.equalsIgnoreCase(names[result])) {
+                                System.out.println("\n Employee found!");
+                                System.out.println("Name: " + emp.name);
+                                System.out.println("Manager: " + emp.manager);
+                                System.out.println("Department: " + emp.department);
+                                break;
+                            }
+                        }
+                    }
+
+                } catch (FileNotFoundException e) {
+                    System.out.println("Error: File not found!");
+                }
+
+                break;
                 case 3:
                     System.out.println("case 3 under construction");
                     break;
