@@ -7,12 +7,32 @@ package ca2_hdip2_2025039_david_gomez;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author dav_g
  */
 public class CA2_HDip2_2025039_David_Gomez {
+    
+    public class InsertionSort {
+
+    // Sorts an array of Strings alphabetically
+    public static void insertionSort(String[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            String key = arr[i];
+            int j = i - 1;
+
+            // Compare alphabetically using compareToIgnoreCase
+            while (j >= 0 && arr[j].compareToIgnoreCase(key) > 0) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+}
 
     /**
      * @param args the command line arguments
@@ -26,22 +46,6 @@ public class CA2_HDip2_2025039_David_Gomez {
 
         // The text file is in the project root folder
         File file = new File(fileName);
-
-        try (Scanner fileScanner = new Scanner(file)) { // Scanner for file
-
-            // Read the file line by line
-            while (fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
-                
-            }
-        // message showing that  the doc was read.    
-            System.out.println("Document was successfully read");
-
-        } catch (FileNotFoundException e) {
-            System.out.println("Error: File not found!");
-            e.printStackTrace();
-            return;
-        }
     
       Scanner scanner = new Scanner(System.in);
             while (true) {
@@ -66,7 +70,45 @@ public class CA2_HDip2_2025039_David_Gomez {
 
             switch (choice) {
                 case 1:
-                    System.out.println("case 1 under construction");
+                    int i = 1;
+                    System.out.println("\nYou chose: SORT");
+                    try (Scanner fileScanner = new Scanner(new File(fileName))) {
+                        // Skip header line
+                        if (fileScanner.hasNextLine()) fileScanner.nextLine();
+
+                        // Read all names into an array list
+                        List<String> namesList = new ArrayList<>();
+
+                        while (fileScanner.hasNextLine()) {
+                            String line = fileScanner.nextLine();
+                            String[] parts = line.split(",");
+                            if (parts.length >= 1) {
+                                namesList.add(parts[0].trim()); // first column is Name
+                            }
+                        }
+
+                        // Convert ArrayList to array
+                        String[] names = namesList.toArray(new String[0]);
+
+                        // Show unsorted names
+                        System.out.println("\nBefore sorting:");
+                        for (String name : names) {
+                            System.out.println(name);
+                        }
+
+                        // Call the insertion sort for strings
+                        InsertionSort.insertionSort(names);
+
+                        // Show sorted names
+                        System.out.println("\nAfter sorting (A–Z):");
+                        for (String name : names) {
+                            System.out.println(i + " " +name);
+                            i = i + 1;
+                        }
+
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Error: File not found!");
+                    }                    
                     break;
                 case 2:
                     System.out.println("case 2 under construction");
