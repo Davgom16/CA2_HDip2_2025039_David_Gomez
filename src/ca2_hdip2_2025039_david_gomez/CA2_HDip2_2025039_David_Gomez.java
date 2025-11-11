@@ -33,6 +33,24 @@ public class CA2_HDip2_2025039_David_Gomez {
         }
     }
 }
+    
+    // Recursive binary search for Strings
+    public static int binarySearch(String[] arr, int left, int right, String target) {
+        if (left > right) {
+            return -1; // Not found
+        }
+
+        int mid = left + (right - left) / 2;
+        int comparison = arr[mid].compareToIgnoreCase(target);
+
+        if (comparison == 0) {
+            return mid; // Found
+        } else if (comparison > 0) {
+            return binarySearch(arr, left, mid - 1, target); // Search left half
+        } else {
+            return binarySearch(arr, mid + 1, right, target); // Search right half
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -111,7 +129,47 @@ public class CA2_HDip2_2025039_David_Gomez {
                     }                    
                     break;
                 case 2:
-                    System.out.println("case 2 under construction");
+                    
+                    System.out.println("\nYou chose: SEARCH");
+
+                    try (Scanner fileScanner = new Scanner(new File(fileName))) {
+                        // Skip header line
+                        if (fileScanner.hasNextLine()) fileScanner.nextLine();
+
+                        // Read all names into an array list
+                        List<String> namesList = new ArrayList<>();
+
+                        while (fileScanner.hasNextLine()) {
+                            String line = fileScanner.nextLine();
+                            String[] parts = line.split(",");
+                            if (parts.length >= 1) {
+                                namesList.add(parts[0].trim());
+                            }
+                        }
+
+                        // Convert to array and sort first (binary search requires sorted data)
+                        String[] names = namesList.toArray(new String[0]);
+                        InsertionSort.insertionSort(names);
+
+                        // Ask the user for the name to search
+                        System.out.print("Enter the name to search: ");
+                        String targetName = scanner.nextLine().trim();
+
+                        // Perform binary search
+                        int result = binarySearch(names, 0, names.length - 1, targetName);
+
+                        // Show results
+                        if (result == -1) {
+                            System.out.println("Name not found in the list.");
+                        } else {
+                            System.out.println("Name found at position: " + result);
+                            System.out.println("Name: " + names[result]);
+                        }
+
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Error: File not found!");
+                    }
+
                     break;
                 case 3:
                     System.out.println("case 3 under construction");
