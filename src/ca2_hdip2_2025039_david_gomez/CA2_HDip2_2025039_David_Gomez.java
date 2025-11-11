@@ -40,9 +40,52 @@ public class CA2_HDip2_2025039_David_Gomez {
         } catch (FileNotFoundException e) {
             System.out.println("Error: File not found!");
             e.printStackTrace();
+            return;
+        }
+    
+      Scanner scanner = new Scanner(System.in);
+            while (true) {
+            System.out.println("\n===== MAIN MENU =====");
+            System.out.println("1. SORT");
+            System.out.println("2. SEARCH");
+            System.out.println("3. ADD RECORDS");
+            System.out.println("4. CREATE A BINARY TREE");
+            System.out.println("5. EXIT");
+
+            System.out.print("Choose an option (1-5): ");
+            
+            // Check for invalid input (non-number)
+            if (!scanner.hasNextInt()) {
+                System.out.println("Invalid input! Please enter a number (1-5).");
+                scanner.nextLine(); // clear invalid input
+                continue;
+            }
+            
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.println("case 1 under construction");
+                    break;
+                case 2:
+                    System.out.println("case 2 under construction");
+                    break;
+                case 3:
+                    System.out.println("case 3 under construction");
+                    break;
+                case 4:
+                    System.out.println("case 4 under construction");
+                    break;
+                case 5:
+                    System.out.println("Exiting the program...");
+                    scanner.close();
+                    return; // <-- Stops the loop and ends the program
+                 
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+                    break;
+            }
         }
     }
-    
-    
-    
 }
