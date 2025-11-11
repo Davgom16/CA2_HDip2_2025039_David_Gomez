@@ -1,0 +1,21 @@
+Name,Manager,Department
+Alice Johnson,Robert King,Sales
+Michael Lee,Robert King,Sales
+Emma Davis,Laura Green,Customer Service
+Noah Wilson,Laura Green,Customer Service
+Olivia Martinez,James Smith,Finance
+Liam Brown,James Smith,Finance
+Sophia Taylor,Emily White,Human Resources
+Mason Anderson,Emily White,Human Resources
+Isabella Thomas,William Harris,IT
+Ethan Moore,William Harris,IT
+Charlotte Jackson,William Harris,IT
+Benjamin Clark,Robert King,Sales
+Amelia Lewis,James Smith,Finance
+Henry Walker,Laura Green,Customer Service
+Evelyn Young,Emily White,Human Resources
+Alexander Hall,William Harris,IT
+Harper Allen,Robert King,Sales
+Daniel Wright,James Smith,Finance
+Avery Scott,Laura Green,Customer Service
+Ella Adams,Emily White,Human Resources
