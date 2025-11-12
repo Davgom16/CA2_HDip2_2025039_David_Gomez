@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -199,8 +201,87 @@ public class CA2_HDip2_2025039_David_Gomez {
 
                 break;
                 case 3:
-                    System.out.println("case 3 under construction");
+                    
+                    System.out.println("\nYou chose: ADD RECORDS");
+                    System.out.print("\nEnter the employee name to add: ");
+                    String newName = scanner.nextLine().trim();
+                    boolean recordAdded = false;
+                    
+                    while (!recordAdded) {
+                        
+                        System.out.println("\n===== Select a Manager & Department=====");
+                        System.out.println("1. Robert King, Sales");
+                        System.out.println("2. Laura Green, Customer Service");
+                        System.out.println("3. James Smith, Finance");
+                        System.out.println("4. Emily White, Human Resources");
+                        System.out.println("5. William Harris, IT");
+                        System.out.println("6. Return to main manu");
+
+                        System.out.print("Choose an option (1-6): ");
+
+                        // Check for invalid input (non-number)
+                        if (!scanner.hasNextInt()) {
+                            System.out.println("Invalid input! Please enter a number (1-6).");
+                            scanner.nextLine(); // clear invalid input
+                            continue;
+                        }
+
+                        int man_dept = scanner.nextInt();
+                        scanner.nextLine(); // Consume newline
+                        
+                        String department = "";
+                        String manager = "";
+                        
+                        
+                        switch (man_dept) {
+                            case 1:
+                                manager = "Robert King";
+                                department = "Sales";
+                                break;
+
+                            case 2:
+                                manager = "Laura Green";
+                                department = "Customer Service";
+                                break;
+
+                            case 3:
+                                manager = "James Smith";
+                                department = "Finance";
+                                break;
+
+                            case 4:
+                                manager = "Emily White";
+                                department = "Human Resources";
+                                break;
+
+                            case 5:
+                                manager = "William Harris";
+                                department = "IT";
+                                break;
+                                
+                            case 6:
+                                System.out.println("Returning to Main Menu...");
+                                recordAdded = true; // exit loop
+                                continue;
+
+                            default:
+                                System.out.println("Invalid choice! Please try again.");
+                                break;
+
+                        }
+                        
+                        // Only write if user chose a valid option
+                        try (FileWriter writer = new FileWriter(fileName, true)) { // append mode
+                            writer.write("\n" + newName + "," + manager + "," + department);
+                            System.out.println("Record successfully added to the file!");
+                            recordAdded = true;
+                        } catch (IOException e) {
+                            System.out.println("Error writing to the file!");
+                            e.printStackTrace();
+                        }
+                    }
                     break;
+                                     
                 case 4:
                     System.out.println("case 4 under construction");
                     break;

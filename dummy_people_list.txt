@@ -19,3 +19,4 @@ Harper Allen,Robert King,Sales
 Daniel Wright,James Smith,Finance
 Avery Scott,Laura Green,Customer Service
 Ella Adams,Emily White,Human Resources
+David Gomez,Laura Green,Customer Service
