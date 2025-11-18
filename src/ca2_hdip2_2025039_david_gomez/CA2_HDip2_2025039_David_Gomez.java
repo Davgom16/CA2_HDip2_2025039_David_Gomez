@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  *
@@ -66,6 +68,76 @@ public class CA2_HDip2_2025039_David_Gomez {
             this.department = department;
         }
     }
+    
+            // Node class for binary tree
+        public static class TreeNode {
+            String name;
+            String manager;
+            String department;
+            TreeNode left, right;
+
+            public TreeNode(String name, String manager, String department) {
+                this.name = name;
+                this.manager = manager;
+                this.department = department;
+            }
+        }
+
+        // Binary tree with level-order insertion
+        public static class BinaryTree {
+            TreeNode root;
+            int nodeCount = 0;
+
+            // Insert node in level-order (≤2 children)
+            public void insert(TreeNode newNode) {
+                nodeCount++;
+                if (root == null) {
+                    root = newNode;
+                    return;
+                }
+
+                Queue<TreeNode> q = new LinkedList<>();
+                q.add(root);
+
+                while (!q.isEmpty()) {
+                    TreeNode current = q.poll();
+                    if (current.left == null) {
+                        current.left = newNode;
+                        return;
+                    } else {
+                        q.add(current.left);
+                    }
+
+                    if (current.right == null) {
+                        current.right = newNode;
+                        return;
+                    } else {
+                        q.add(current.right);
+                    }
+                }
+            }
+
+            // BFS traversal
+            public void bfs() {
+                if (root == null) return;
+                Queue<TreeNode> q = new LinkedList<>();
+                q.add(root);
+
+                System.out.println("\n===== Employee Hierarchy (Level-Order) =====");
+                while (!q.isEmpty()) {
+                    TreeNode cur = q.poll();
+                    System.out.println(cur.name + " | " + cur.manager + " | " + cur.department);
+                    if (cur.left != null) q.add(cur.left);
+                    if (cur.right != null) q.add(cur.right);
+                }
+            }
+
+            // Compute tree height
+            public int getHeight(TreeNode node) {
+                if (node == null) return 0;
+                return 1 + Math.max(getHeight(node.left), getHeight(node.right));
+            }
+        }
 
     /**
      * @param args the command line arguments

@@ -11,6 +11,11 @@ Isabella Thomas,William Harris,IT
 Ethan Moore,William Harris,IT
 Charlotte Jackson,William Harris,IT
 Benjamin Clark,Robert King,Sales
+Robert King,Kara Dura,Sales
+Emily White,Kara Dura,Human Resources
+Laura Green,Kara Dura,Customer Service
+James Smith,Kara Dura,Finance
+William Harris,Kara Dura,IT
 Amelia Lewis,James Smith,Finance
 Henry Walker,Laura Green,Customer Service
 Evelyn Young,Emily White,Human Resources
@@ -18,5 +23,7 @@ Alexander Hall,William Harris,IT
 Harper Allen,Robert King,Sales
 Daniel Wright,James Smith,Finance
 Avery Scott,Laura Green,Customer Service
+Kara Dura,,CEO
 Ella Adams,Emily White,Human Resources
 David Gomez,Laura Green,Customer Service
+Suheilli venegas,Emily White,Human Resources
