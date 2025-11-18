@@ -175,7 +175,7 @@ public class CA2_HDip2_2025039_David_Gomez {
 
             switch (choice) {
                 case 1:
-                    int j = 1;
+                    
                     System.out.println("\nYou chose: SORT");
                     try (Scanner fileScanner = new Scanner(new File(fileName))) {
                         // Skip header line
@@ -185,9 +185,10 @@ public class CA2_HDip2_2025039_David_Gomez {
                         List<String> namesList = new ArrayList<>();
 
                         while (fileScanner.hasNextLine()) {
-                            String line = fileScanner.nextLine();
-                            String[] parts = line.split(",");
-                            if (parts.length >= 1) {
+                            String line = fileScanner.nextLine().trim();
+                            
+                            if (!line.isEmpty()) {
+                                String[] parts = line.split(",");
                                 namesList.add(parts[0].trim()); // first column is Name
                             }
                         }
@@ -205,10 +206,10 @@ public class CA2_HDip2_2025039_David_Gomez {
                         InsertionSort.insertionSort(names);
 
                         // Show sorted names
-                        System.out.println("\nAfter sorting (A–Z):");
-                        for (String name : names) {
-                            System.out.println(j + " " +name);
-                            j = j + 1;
+                        
+                        System.out.println("\n===== First 20 Names (A–Z) =====");
+                        for (int i = 0; i < names.length && i < 20; i++) {
+                            System.out.println((i + 1) + ". " + names[i]);
                         }
 
                     } catch (FileNotFoundException e) {
