@@ -355,7 +355,39 @@ public class CA2_HDip2_2025039_David_Gomez {
                     break;
                                      
                 case 4:
-                    System.out.println("case 4 under construction");
+                    
+                    System.out.println("\nYou chose: CREATE A BINARY TREE");
+
+                    BinaryTree tree = new BinaryTree();
+
+                    try (Scanner fileScanner = new Scanner(new File(fileName))) {
+                        // Skip header line if present
+                        if (fileScanner.hasNextLine()) fileScanner.nextLine();
+
+                        while (fileScanner.hasNextLine()) {
+                            String line = fileScanner.nextLine();
+                            String[] parts = line.split(",");
+                            if (parts.length < 3) continue;
+
+                            String name = parts[0].trim();
+                            String manager = parts[1].trim();
+                            String department = parts[2].trim();
+
+                            TreeNode node = new TreeNode(name, manager, department);
+                            tree.insert(node);
+                        }
+
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Error: File not found!");
+                        break;
+                    }
+
+                    // Display the tree in level-order
+                    tree.bfs();
+
+                    // Show total nodes and height
+                    System.out.println("\nTotal Employees (Nodes): " + tree.nodeCount);
+                    System.out.println("Tree Height (approx.): " + tree.getHeight(tree.root));
                     break;
                 case 5:
                     System.out.println("Exiting the program...");
