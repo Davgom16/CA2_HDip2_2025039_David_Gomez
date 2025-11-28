@@ -60,11 +60,13 @@ public class CA2_HDip2_2025039_David_Gomez {
     public static class Employee {
         String name;
         String manager;
+        String position;
         String department;
 
-        public Employee(String name, String manager, String department) {
+        public Employee(String name, String manager, String position, String department) {
             this.name = name;
             this.manager = manager;
+            this.position = position;
             this.department = department;
         }
     }
@@ -73,12 +75,14 @@ public class CA2_HDip2_2025039_David_Gomez {
         public static class TreeNode {
             String name;
             String manager;
+            String position;
             String department;
             TreeNode left, right;
 
-            public TreeNode(String name, String manager, String department) {
+            public TreeNode(String name, String manager, String position, String department) {
                 this.name = name;
                 this.manager = manager;
+                this.position = position;
                 this.department = department;
             }
         }
@@ -126,7 +130,7 @@ public class CA2_HDip2_2025039_David_Gomez {
                 System.out.println("\n===== Employee Hierarchy (Level-Order) =====");
                 while (!q.isEmpty()) {
                     TreeNode cur = q.poll();
-                    System.out.println(cur.name + " | " + cur.manager + " | " + cur.department);
+                    System.out.println(cur.name + " | " + cur.manager + " | " + cur.position + " | " + cur.department);
                     if (cur.left != null) q.add(cur.left);
                     if (cur.right != null) q.add(cur.right);
                 }
@@ -232,8 +236,9 @@ public class CA2_HDip2_2025039_David_Gomez {
                         if (parts.length >= 3) {
                             String name = parts[0].trim();
                             String manager = parts[1].trim();
-                            String department = parts[2].trim();
-                            employeeList.add(new Employee(name, manager, department));
+                            String position = parts[2].trim();
+                            String department = parts[3].trim();
+                            employeeList.add(new Employee(name, manager, position, department));
                         }
                     }
 
@@ -262,6 +267,7 @@ public class CA2_HDip2_2025039_David_Gomez {
                                 System.out.println("\n Employee found!");
                                 System.out.println("Name: " + emp.name);
                                 System.out.println("Manager: " + emp.manager);
+                                System.out.println("Position: " + emp.position);
                                 System.out.println("Department: " + emp.department);
                                 break;
                             }
@@ -278,81 +284,163 @@ public class CA2_HDip2_2025039_David_Gomez {
                     System.out.println("\nYou chose: ADD RECORDS");
                     System.out.print("\nEnter the employee name to add: ");
                     String newName = scanner.nextLine().trim();
-                    boolean recordAdded = false;
                     
-                    while (!recordAdded) {
-                        
-                        System.out.println("\n===== Select a Manager & Department=====");
-                        System.out.println("1. Robert King, Sales");
-                        System.out.println("2. Laura Green, Customer Service");
-                        System.out.println("3. James Smith, Finance");
-                        System.out.println("4. Emily White, Human Resources");
-                        System.out.println("5. William Harris, IT");
-                        System.out.println("6. Return to main manu");
+                    String newPosition = "";
+                    boolean validPosition = false;
+                    
+                    while (!validPosition) {
+                        System.out.println("\n===== Select Position =====");
+                        System.out.println("1. Operative");
+                        System.out.println("2. Manager");
+                        System.out.print("Choose an option (1-2): ");
 
-                        System.out.print("Choose an option (1-6): ");
-
-                        // Check for invalid input (non-number)
                         if (!scanner.hasNextInt()) {
-                            System.out.println("Invalid input! Please enter a number (1-6).");
-                            scanner.nextLine(); // clear invalid input
+                            System.out.println("Invalid input! Please enter 1 or 2.");
+                            scanner.nextLine();
                             continue;
                         }
 
-                        int man_dept = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline
-                        
-                        String department = "";
-                        String manager = "";
-                        
-                        
-                        switch (man_dept) {
-                            case 1:
-                                manager = "Robert King";
-                                department = "Sales";
-                                break;
+                        int posChoice = scanner.nextInt();
+                        scanner.nextLine();
 
-                            case 2:
-                                manager = "Laura Green";
-                                department = "Customer Service";
-                                break;
-
-                            case 3:
-                                manager = "James Smith";
-                                department = "Finance";
-                                break;
-
-                            case 4:
-                                manager = "Emily White";
-                                department = "Human Resources";
-                                break;
-
-                            case 5:
-                                manager = "William Harris";
-                                department = "IT";
-                                break;
-                                
-                            case 6:
-                                System.out.println("Returning to Main Menu...");
-                                recordAdded = true; // exit loop
-                                continue;
-
-                            default:
-                                System.out.println("Invalid choice! Please try again.");
-                                break;
-
-                        }
-                        
-                        // Only write if user chose a valid option
-                        try (FileWriter writer = new FileWriter(fileName, true)) { // append mode
-                            writer.write("\n" + newName + "," + manager + "," + department);
-                            System.out.println("Record successfully added to the file!");
-                            recordAdded = true;
-                        } catch (IOException e) {
-                            System.out.println("Error writing to the file!");
-                            e.printStackTrace();
+                        if (posChoice == 1) {
+                            newPosition = "Operative";
+                            validPosition = true;
+                        } else if (posChoice == 2) {
+                            newPosition = "Manager";
+                            validPosition = true;
+                        } else {
+                            System.out.println("Invalid choice! Try again.");
                         }
                     }
+                    
+                    String dept = "";
+                    String man = "";
+                        
+                    if (newPosition.equals("Operative")) {
+
+                        boolean managerChosen = false;
+                    
+                        while (!managerChosen) {
+
+                            System.out.println("\n===== Select a Manager & Department=====");
+                            System.out.println("1. Robert King, Sales");
+                            System.out.println("2. Laura Green, Customer Service");
+                            System.out.println("3. James Smith, Finance");
+                            System.out.println("4. Emily White, Human Resources");
+                            System.out.println("5. William Harris, IT");
+                            System.out.println("6. Return to main manu");
+
+                            System.out.print("Choose an option (1-6): ");
+
+                            // Check for invalid input (non-number)
+                            if (!scanner.hasNextInt()) {
+                                System.out.println("Invalid input! Please enter a number (1-6).");
+                                scanner.nextLine(); // clear invalid input
+                                continue;
+                            }
+
+                            int man_dept = scanner.nextInt();
+                            scanner.nextLine(); // Consume newline
+
+                            switch (man_dept) {
+                                case 1:
+                                    man = "Robert King";
+                                    dept = "Sales";
+                                    break;
+
+                                case 2:
+                                    man = "Laura Green";
+                                    dept = "Customer Service";
+                                    break;
+
+                                case 3:
+                                    man = "James Smith";
+                                    dept = "Finance";
+                                    break;
+
+                                case 4:
+                                    man = "Emily White";
+                                    dept = "Human Resources";
+                                    break;
+
+                                case 5:
+                                    man = "William Harris";
+                                    dept = "IT";
+                                    break;
+
+                                case 6:
+                                    System.out.println("Returning to Main Menu...");
+                                    managerChosen = true; // exit loop
+                                    continue;
+
+                                default:
+                                    System.out.println("Invalid choice! Please try again.");
+                                    break;
+
+                            }
+                        }
+                    }
+                    
+                    if (newPosition.equals("Manager")) {
+
+                        boolean departmentChosen = false;
+
+                        while (!departmentChosen) {
+                            System.out.println("\n===== Select Department for the Manager =====");
+                            System.out.println("1. Sales");
+                            System.out.println("2. Customer Service");
+                            System.out.println("3. Finance");
+                            System.out.println("4. Human Resources");
+                            System.out.println("5. IT");
+                            System.out.println("6. Cancel and Return to Main Menu");
+
+                            System.out.print("Choose an option (1-6): ");
+
+                            if (!scanner.hasNextInt()) {
+                                System.out.println("Invalid input! Enter 1-6.");
+                                scanner.nextLine();
+                                continue;
+                            }
+
+                            int opt = scanner.nextInt();
+                            scanner.nextLine();
+
+                            switch (opt) {
+                                case 1:
+                                    dept = "Sales";
+                                    break;
+                                case 2:
+                                    dept = "Customer Service";
+                                    break;
+                                case 3:
+                                    dept = "Finance";
+                                    break;
+                                case 4:
+                                    dept = "Human Resources";
+                                    break;
+                                case 5:
+                                    dept = "IT";
+                                    break;
+                                case 6:
+                                    System.out.println("Returning to Main Menu...");
+                                    departmentChosen = true;
+                                    break;
+                                default:
+                                    System.out.println("Invalid option! Try again.");
+                            }
+                        }
+                    }
+
+                            // Only write if user chose a valid option
+                    try (FileWriter writer = new FileWriter(fileName, true)) {
+                        writer.write("\n" + newName + "," + man + "," + newPosition + "," + dept);
+                        System.out.println("Record successfully added!");
+                    } catch (IOException e) {
+                        System.out.println("Error writing to file!");
+                        e.printStackTrace();
+                    }
+
                     break;
                                      
                 case 4:
@@ -372,9 +460,10 @@ public class CA2_HDip2_2025039_David_Gomez {
 
                             String name = parts[0].trim();
                             String manager = parts[1].trim();
-                            String department = parts[2].trim();
+                            String position = parts[2].trim();
+                            String department = parts[3].trim();
 
-                            TreeNode node = new TreeNode(name, manager, department);
+                            TreeNode node = new TreeNode(name, manager, position, department);
                             tree.insert(node);
                         }
 

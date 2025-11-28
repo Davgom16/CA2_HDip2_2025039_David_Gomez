@@ -1,29 +1,28 @@
-Name,Manager,Department
-Alice Johnson,Robert King,Sales
-Michael Lee,Robert King,Sales
-Emma Davis,Laura Green,Customer Service
-Noah Wilson,Laura Green,Customer Service
-Olivia Martinez,James Smith,Finance
-Liam Brown,James Smith,Finance
-Sophia Taylor,Emily White,Human Resources
-Mason Anderson,Emily White,Human Resources
-Isabella Thomas,William Harris,IT
-Ethan Moore,William Harris,IT
-Charlotte Jackson,William Harris,IT
-Benjamin Clark,Robert King,Sales
-Robert King,Kara Dura,Sales
-Emily White,Kara Dura,Human Resources
-Laura Green,Kara Dura,Customer Service
-James Smith,Kara Dura,Finance
-William Harris,Kara Dura,IT
-Amelia Lewis,James Smith,Finance
-Henry Walker,Laura Green,Customer Service
-Evelyn Young,Emily White,Human Resources
-Alexander Hall,William Harris,IT
-Harper Allen,Robert King,Sales
-Daniel Wright,James Smith,Finance
-Avery Scott,Laura Green,Customer Service
-Kara Dura,,CEO
-Ella Adams,Emily White,Human Resources
-David Gomez,Laura Green,Customer Service
-Suheilli venegas,Emily White,Human Resources
+Name,Manager,Position,Department
+Alice Johnson,Robert King,Operative,Sales
+Michael Lee,Robert King,Operative,Sales
+Emma Davis,Laura Green,Operative,Customer Service
+Noah Wilson,Laura Green,Operative,Customer Service
+Olivia Martinez,James Smith,Operative,Finance
+Liam Brown,James Smith,Operative,Finance
+Sophia Taylor,Emily White,Operative,Human Resources
+Mason Anderson,Emily White,Operative,Human Resources
+Isabella Thomas,William Harris,Operative,IT
+Ethan Moore,William Harris,Operative,IT
+Charlotte Jackson,William Harris,Operative,IT
+Benjamin Clark,Robert King,Operative,Sales
+Robert King,Kara Dura,Manager,Sales
+Emily White,Kara Dura,Manager,Human Resources
+Laura Green,Kara Dura,Manager,Customer Service
+James Smith,Kara Dura,Manager,Finance
+William Harris,Kara Dura,Manager,IT
+Amelia Lewis,James Smith,Operative,Finance
+Henry Walker,Laura Green,Operative,Customer Service
+Evelyn Young,Emily White,Operative,Human Resources
+Alexander Hall,William Harris,Operative,IT
+Harper Allen,Robert King,Operative,Sales
+Daniel Wright,James Smith,Operative,Finance
+Avery Scott,Laura Green,Operative,Customer Service
+Kara Dura,,CEO,C-Suite
+Ella Adams,Emily White,Operative,Human Resources
+
