@@ -25,4 +25,3 @@ Daniel Wright,James Smith,Operative,Finance
 Avery Scott,Laura Green,Operative,Customer Service
 Kara Dura,,CEO,C-Suite
 Ella Adams,Emily White,Operative,Human Resources
-

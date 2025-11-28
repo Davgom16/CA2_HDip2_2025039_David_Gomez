@@ -126,13 +126,25 @@ public class CA2_HDip2_2025039_David_Gomez {
                 if (root == null) return;
                 Queue<TreeNode> q = new LinkedList<>();
                 q.add(root);
+                
+                int level = 0;
 
                 System.out.println("\n===== Employee Hierarchy (Level-Order) =====");
                 while (!q.isEmpty()) {
-                    TreeNode cur = q.poll();
-                    System.out.println(cur.name + " | " + cur.manager + " | " + cur.position + " | " + cur.department);
-                    if (cur.left != null) q.add(cur.left);
-                    if (cur.right != null) q.add(cur.right);
+                    int levelSize = q.size();
+                    System.out.print("level " + level + ":");
+                    for (int i = 0; i < levelSize; i++){
+                        
+                        TreeNode cur = q.poll();
+                        System.out.println(cur.name + " | " + cur.manager + " | " + cur.position + " | " + cur.department);
+                        if (cur.left != null) q.add(cur.left);
+                        if (cur.right != null) q.add(cur.right);
+           
+                    }
+                    
+                    System.out.println(); // new line for next level
+                    level++;
+                    
                 }
             }
 
