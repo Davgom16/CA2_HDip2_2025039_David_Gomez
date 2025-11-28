@@ -163,7 +163,7 @@ public class CA2_HDip2_2025039_David_Gomez {
         Scanner inputScanner = new Scanner(System.in); // Scanner for user input
 
         System.out.print("Enter the file name to read: ");
-        String fileName = inputScanner.nextLine();
+        String fileName = inputScanner.nextLine() + ".txt";
 
         // The text file is in the project root folder
         File file = new File(fileName);
@@ -359,26 +359,31 @@ public class CA2_HDip2_2025039_David_Gomez {
                                 case 1:
                                     man = "Robert King";
                                     dept = "Sales";
+                                    managerChosen = true;
                                     break;
 
                                 case 2:
                                     man = "Laura Green";
                                     dept = "Customer Service";
+                                    managerChosen = true;
                                     break;
 
                                 case 3:
                                     man = "James Smith";
                                     dept = "Finance";
+                                    managerChosen = true;
                                     break;
 
                                 case 4:
                                     man = "Emily White";
                                     dept = "Human Resources";
+                                    managerChosen = true;
                                     break;
 
                                 case 5:
                                     man = "William Harris";
                                     dept = "IT";
+                                    managerChosen = true;
                                     break;
 
                                 case 6:
@@ -421,18 +426,23 @@ public class CA2_HDip2_2025039_David_Gomez {
                             switch (opt) {
                                 case 1:
                                     dept = "Sales";
+                                    departmentChosen = true;
                                     break;
                                 case 2:
                                     dept = "Customer Service";
+                                    departmentChosen = true;
                                     break;
                                 case 3:
                                     dept = "Finance";
+                                    departmentChosen = true;
                                     break;
                                 case 4:
                                     dept = "Human Resources";
+                                    departmentChosen = true;
                                     break;
                                 case 5:
                                     dept = "IT";
+                                    departmentChosen = true;
                                     break;
                                 case 6:
                                     System.out.println("Returning to Main Menu...");
@@ -489,7 +499,7 @@ public class CA2_HDip2_2025039_David_Gomez {
 
                     // Show total nodes and height
                     System.out.println("\nTotal Employees (Nodes): " + tree.nodeCount);
-                    System.out.println("Tree Height (approx.): " + tree.getHeight(tree.root));
+                    System.out.println("Tree Height: " + tree.getHeight(tree.root));
                     break;
                 case 5:
                     System.out.println("Exiting the program...");
