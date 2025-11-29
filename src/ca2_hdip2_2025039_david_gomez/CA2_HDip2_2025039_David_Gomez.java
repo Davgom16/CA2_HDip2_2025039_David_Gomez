@@ -451,22 +451,27 @@ public class CA2_HDip2_2025039_David_Gomez {
                                 switch (opt) {
                                     case 1:
                                         dept = "Sales";
+                                        man = "Kara Dura";
                                         departmentChosen = true;
                                         break;
                                     case 2:
                                         dept = "Customer Service";
+                                        man = "Kara Dura";
                                         departmentChosen = true;
                                         break;
                                     case 3:
                                         dept = "Finance";
+                                        man = "Kara Dura";
                                         departmentChosen = true;
                                         break;
                                     case 4:
                                         dept = "Human Resources";
+                                        man = "Kara Dura";
                                         departmentChosen = true;
                                         break;
                                     case 5:
                                         dept = "IT";
+                                        man = "Kara Dura";
                                         departmentChosen = true;
                                         break;
                                     case 6:
